@@ -1,0 +1,139 @@
+{
+	"name": "tpl-umifile",
+	"displayName": "Tpl-umifile",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.57.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:tpl-umifile.creatPage",
+		"onCommand:tpl-help-select"
+
+	],
+  "main": "./dist/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "tpl-umifile.creatPage",
+				"title": "tpl-create-page"
+			},
+      {
+				"command": "tpl-umifile.creatComponent",
+				"title": "tpl-create-compent"
+			},
+      {
+				"command": "tpl-umifile.creatSelect",
+				"title": "tpl-help-select"
+			}
+
+		],
+		"keybindings": [
+      {
+        "command": "tpl-umifile.creatSelect",
+        "key": "ctrl+f10",
+        "mac": "cmd+f10",
+        "when": "editorFocus"
+      },
+      {
+        "command": "tpl-umifile.creatPage",
+        "key": "ctrl+f11",
+        "mac": "cmd+f11",
+        "when": "editorFocus"
+      }
+    ],
+		"menus": {
+      "explorer/context": [
+        {
+          "command": "tpl-umifile.creatSelect",
+          "group": "navigation",
+          "when": "explorerResourceIsFolder"
+				}
+      ]
+    },
+		"configuration": {
+      "title": "tpl",
+      "properties": {
+        "findTestFile.basic.testSuffix": {
+          "type": "string",
+          "default": "\\.(spec|test)",
+          "markdownDescription": "xxxxxx"
+        },
+        "findTestFile.basic.excludeFolder": {
+          "type": "array",
+          "default": [
+            "node_modules"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "markdownDescription": "xxxxxx"
+        },
+        "findTestFile.createIfNotFind.enable": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "xxxxxx"
+        },
+        "findTestFile.createIfNotFind.preferStructureMode": {
+          "type": "string",
+          "default": "separate",
+          "enum": [
+            "separate",
+            "unite"
+          ],
+          "markdownEnumDescriptions": [
+            "xxxxxx",
+            "xxxxxx"
+          ],
+          "markdownDescription": "xxxxxx"
+        },
+        "findTestFile.createIfNotFind.preferTestDirectory": {
+          "type": "object",
+          "default": {
+            "separate": "__tests__",
+            "unite": "__tests__"
+          },
+          "properties": {
+            "separate": {
+              "type": "string"
+            },
+            "unite": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "separate",
+            "unite"
+          ],
+          "additionalProperties": false,
+          "markdownDescription": "xxxxxx"
+        }
+      }
+    }
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.67.0",
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^5.21.0",
+		"@typescript-eslint/parser": "^5.21.0",
+		"eslint": "^8.14.0",
+		"glob": "^8.0.1",
+		"mocha": "^9.2.2",
+		"typescript": "^4.6.4",
+		"@vscode/test-electron": "^2.1.3"
+	}
+}
