@@ -1,4 +1,14 @@
+import * as vscode from "vscode";
+const path = require("path");
+const activeEditor = vscode.window?.activeTextEditor as vscode.TextEditor;
+const workspaceFilePath = vscode.workspace.getWorkspaceFolder(
+  activeEditor.document.uri
+)?.uri?.fsPath as string
+//获取当前vscode工作区一个路径的绝对路径
+export const getAbsolutePath=(targetPath:string)=>{
 
+  return path.resolve(workspaceFilePath, targetPath)
+}
 
 // 首字母大写, - 转化处理
 const capitalize = (string: any) => {

@@ -5,7 +5,7 @@ const path = require("path");
 // // const chalk = require('chalk');
 const conf = require("./rootConfig");
 // @ts-ignore
-import { capitalize, smallLetters } from "./utils";
+import { capitalize, smallLetters, getAbsolutePath } from "./utils";
 // @ts-ignore
 import { writeFileByType } from "./template";
 
@@ -16,18 +16,13 @@ const DIRS = ["models", "services", "components"];
 function isExisDir(dir: string) {
   try {
     const stat = fs.statSync(dir);
-
     if (stat) {
-      console.log(1);
-
       return true;
     }
   } catch (error) {
-    console.log(error, 88);
+    console.error(error);
     return false;
   }
-  console.log(2);
-
   return false;
 }
 
@@ -59,12 +54,13 @@ function mkdirsSync(dirname: string) {
     return true;
   }
 }
-function Main( type: string, name: string | undefined) {
+function Main(type: string, name: string | undefined) {
 
   if (!name) {
     return vscode.window.showWarningMessage("请输入要创建的模块名称!");
   }
   const activeEditor = vscode.window?.activeTextEditor as vscode.TextEditor;
+  //当前vscode工作区的根路径
   const workspaceFilePath = vscode.workspace.getWorkspaceFolder(
     activeEditor.document.uri
   )?.uri?.fsPath as string
@@ -90,11 +86,10 @@ function start(file: string, type: string, workspaceFilePath: string) {
     if (file?.length) {
 
       // 公共组件和页面模板组件，路径不相同
-      let root = "./";
-      // if (type === 'Components' && isExisDir(conf.rootCompPath)) {
-      if (type === 'Components') {
+      let root = "./src";
+      if (type === 'Components' && isExisDir(getAbsolutePath(conf.rootCompPath))) {
         root = conf.rootCompPath
-      } else if (isExisDir(conf.root)) {
+      } else if (isExisDir(getAbsolutePath(conf.root))) {
         root = conf.root
       }
       // 获取 root 下面的所有文件夹
@@ -105,7 +100,7 @@ function start(file: string, type: string, workspaceFilePath: string) {
       if (allDirs.indexOf(file) > -1) {
         const msg = `${file} 文件夹已经存在，请重命名输入！！！`
         vscode.window.showWarningMessage(msg);
-        console.info(msg); // eslint-disable-line
+        console.info(msg);
         return;
       }
 
@@ -137,7 +132,7 @@ function start(file: string, type: string, workspaceFilePath: string) {
   } catch (error) {
     console.error(error);
 
-    vscode.window.showErrorMessage('创建出错,请检查执行目录是否存在')
+    vscode.window.showErrorMessage('创建出错,请检查src目录是否存在')
   }
 }
 

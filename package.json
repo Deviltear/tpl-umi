@@ -11,7 +11,8 @@
 	],
 	"activationEvents": [
 		"onCommand:tpl-umifile.creatPage",
-		"onCommand:tpl-help-select"
+		"onCommand:tpl-umifile.creatSelect",
+		"onCommand:tpl-umifile.creatComponent"
 
 	],
   "main": "./dist/extension.js",
@@ -19,11 +20,11 @@
 		"commands": [
 			{
 				"command": "tpl-umifile.creatPage",
-				"title": "tpl-create-page"
+				"title": "tpl-create-pages"
 			},
       {
 				"command": "tpl-umifile.creatComponent",
-				"title": "tpl-create-compent"
+				"title": "tpl-create-Components"
 			},
       {
 				"command": "tpl-umifile.creatSelect",
@@ -35,84 +36,30 @@
       {
         "command": "tpl-umifile.creatSelect",
         "key": "ctrl+f10",
-        "mac": "cmd+f10",
-        "when": "editorFocus"
+        "mac": "cmd+f10"
       },
       {
         "command": "tpl-umifile.creatPage",
         "key": "ctrl+f11",
-        "mac": "cmd+f11",
-        "when": "editorFocus"
+        "mac": "cmd+f11"
       }
     ],
 		"menus": {
-      "explorer/context": [
+      "editor/context": [
         {
           "command": "tpl-umifile.creatSelect",
-          "group": "navigation",
+          "group": "1_find-test-file",
           "when": "explorerResourceIsFolder"
 				}
-      ]
-    },
-		"configuration": {
-      "title": "tpl",
-      "properties": {
-        "findTestFile.basic.testSuffix": {
-          "type": "string",
-          "default": "\\.(spec|test)",
-          "markdownDescription": "xxxxxx"
-        },
-        "findTestFile.basic.excludeFolder": {
-          "type": "array",
-          "default": [
-            "node_modules"
-          ],
-          "items": {
-            "type": "string"
-          },
-          "uniqueItems": true,
-          "markdownDescription": "xxxxxx"
-        },
-        "findTestFile.createIfNotFind.enable": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "xxxxxx"
-        },
-        "findTestFile.createIfNotFind.preferStructureMode": {
-          "type": "string",
-          "default": "separate",
-          "enum": [
-            "separate",
-            "unite"
-          ],
-          "markdownEnumDescriptions": [
-            "xxxxxx",
-            "xxxxxx"
-          ],
-          "markdownDescription": "xxxxxx"
-        },
-        "findTestFile.createIfNotFind.preferTestDirectory": {
-          "type": "object",
-          "default": {
-            "separate": "__tests__",
-            "unite": "__tests__"
-          },
-          "properties": {
-            "separate": {
-              "type": "string"
-            },
-            "unite": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "separate",
-            "unite"
-          ],
-          "additionalProperties": false,
-          "markdownDescription": "xxxxxx"
+      ],
+			"editor/title": [
+        {
+          "command": "find-test-file.jumpToTest",
+          "group": "navigation"
         }
-      }
+
+      ]
+
     }
 	},
 	"scripts": {

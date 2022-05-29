@@ -8,7 +8,14 @@ const getUserInput = (type:string) => {
       ignoreFocusOut: true, // 默认false，设置为true时鼠标点击别的地方输入框不会消失
       placeHolder: '输入创建模板的名称,如果多个请用逗号分隔', // 在输入框内的提示信息
       prompt: '输入创建模板的名称', // 在输入框下方的提示信息
-      validateInput:function(text){return text.trim()}
+      //FixMe:待验证只能有字母及逗号字符出现
+    //   validateInput:function(text){
+    //  const reg=   /^[-a-zA-Z,]/
+    // //  if (reg.test(text.trim())) {
+
+    //   return text.trim()
+    // // }
+    //  }
     } // 对输入内容进行验证并返回
   ).then(function (inputMsg) {
     Main(type,inputMsg)
@@ -36,12 +43,11 @@ const openQuicPick = () => {
 export function activate(context: vscode.ExtensionContext) {
 
 
-
-const creatSelectCommands = vscode.commands.registerCommand(
+// register creatComponent command
+const creatSelectCommand = vscode.commands.registerCommand(
   'tpl-umifile.creatSelect',
   () => {
-    getUserInput("Page")
-
+    openQuicPick()
 });
   // register creatComponent command
   const creatComponentCommand = vscode.commands.registerCommand(
@@ -55,14 +61,13 @@ const creatSelectCommands = vscode.commands.registerCommand(
   const creatPageCommand = vscode.commands.registerCommand(
     "tpl-umifile.creatPage",
     () => {
-      openQuicPick()
-      // getUserInput("Page")
+      getUserInput("Page")
 
     }
   );
 
   // 将命令注册到执行上下文中
-  context.subscriptions.push(creatSelectCommands, creatPageCommand,creatComponentCommand);
+  context.subscriptions.push(creatSelectCommand, creatPageCommand,creatComponentCommand);
 }
 
 export function deactivate() {}
