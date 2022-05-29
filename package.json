@@ -6,6 +6,9 @@
 	"engines": {
 		"vscode": "^1.67.0"
 	},
+	"repository": {
+		"url": "https://github.com/"
+},
 	"publisher": "sunny",
 	"categories": [
 		"Other"
