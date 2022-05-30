@@ -6,13 +6,13 @@
 xxx                     // 业务组件根目录
   |-- components        // 业务组件目录
   |-- models            // 业务 models 目录
-    |-- xxx.js          // 业务 model 文件，自动加载 services
+    |-- xxx.ts          // 业务 model 文件，自动加载 services
   |-- services          // 业务 services 目录
-    |-- xxx.js          // 业务 service 文件
-  |-- XxxPage.js        // 业务组件开发入口，自动 connect model
+    |-- xxx.ts          // 业务 service 文件
+  |-- XxxPage.ts        // 业务组件开发入口，自动 connect model
   |-- XxxPage.less      // 业务样式
   |-- index.js          // 业务入口，使用 dynamic 引用
-  |-- MapProps.js       // mapStateToProps、mapDispatchToProps，自动引用 model
+  |-- MapProps.tsx       // mapStateToProps、mapDispatchToProps，自动引用 model
 </pre>
 
  组件模块 结构如下：
@@ -49,12 +49,13 @@ home1                    // 业务组件根目录
     |-- home1.ts         // 业务 model 文件，自动加载 services
   |-- services          // 业务 services 目录
     |-- home1.ts         // 业务 service 文件
-  |-- Home1Page.ts       // 业务组件开发入口，自动 connect model
+  |-- Home1Page.tsx       // 业务组件开发入口，自动 connect model
   |-- Home1Page.less     // 业务样式
   |-- index.ts          // 业务入口，使用 dynamic 引用
-  |-- MapProps.ts       // mapStateToProps、mapDispatchToProps，自动引用 model
+  |-- MapProps.tsx       // mapStateToProps、mapDispatchToProps，自动引用 model
 </pre>
 
+<pre>
 home2                    // 业务组件根目录
   |-- components        // 业务组件目录
   |-- models            // 业务 models 目录
@@ -64,7 +65,7 @@ home2                    // 业务组件根目录
   |-- Home2Page.tsx       // 业务组件开发入口，自动 connect model
   |-- Home2Page.less     // 业务样式
   |-- index.ts          // 业务入口，使用 dynamic 引用
-  |-- MapProps.ts       // mapStateToProps、mapDispatchToProps，自动引用 model
+  |-- MapProps.tsx       // mapStateToProps、mapDispatchToProps，自动引用 model
 </pre>
 
 为了规范，在创建模块的时候，请确认当前工程存在'src/pages','src/components'及文件夹
