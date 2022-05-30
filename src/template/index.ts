@@ -84,7 +84,7 @@ function writeTsFile(filePath: string, pageName: string, file: string, type: str
   // index.ts
   writeFile(`${filePath}/index.ts`, indexContent(pageName, type));
   // MapProps.js
-  writeFile(`${filePath}/MapProps.js`, mapPropsContent(pageName, file, type));
+  writeFile(`${filePath}/MapProps.ts`, mapPropsContent(pageName, file, type));
   // xxxPage.tsx
   writeFile(`${filePath}/${pageName}.tsx`, pContent(file, pageName, type));
   // xxxPage.less

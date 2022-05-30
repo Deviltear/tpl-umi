@@ -4,7 +4,7 @@
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
-		"vscode": "^1.67.0"
+		"vscode": "^1.0.0"
 	},
 	"repository": {
 		"url": "https://github.com/"
@@ -24,11 +24,11 @@
 		"commands": [
 			{
 				"command": "tpl-umifile.creatPage",
-				"title": "tpl-create-pages"
+				"title": "tpl-create-page"
 			},
       {
 				"command": "tpl-umifile.creatComponent",
-				"title": "tpl-create-Components"
+				"title": "tpl-create-Component"
 			},
       {
 				"command": "tpl-umifile.creatSelect",
@@ -41,11 +41,6 @@
         "command": "tpl-umifile.creatSelect",
         "key": "ctrl+f10",
         "mac": "cmd+f10"
-      },
-      {
-        "command": "tpl-umifile.creatPage",
-        "key": "ctrl+f11",
-        "mac": "cmd+f11"
       }
     ],
 		"menus": {
@@ -55,13 +50,6 @@
           "group": "1_find-test-file",
           "when": "explorerResourceIsFolder"
 				}
-      ],
-			"editor/title": [
-        {
-          "command": "find-test-file.jumpToTest",
-          "group": "navigation"
-        }
-
       ]
 
     }
